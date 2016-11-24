@@ -2,10 +2,14 @@
   "name": "@novivia/utilities",
   "role": "utilities",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=4",
+    "npm": ">=3",
+  },
+  "license": "SEE LICENSE IN LICENSE.md",
   "publishConfig": {
     "registry": "https://npm.novivia.com",
   },
-  "license": "SEE LICENSE IN LICENSE.md",
   "description": "Novivia general utilities.",
   "authors": [
     "Mathieu M-Gosselin <mathieumg@novivia.com>",
@@ -14,21 +18,22 @@
     "type": "git",
     "url": "git+ssh://git.novivia.com/nov/modules.utilities"
   },
+  "main": "index.js",
+  "novivia-builder": {
+    "babelPatterns": [
+      "**/*.js",
+    ],
+
+    // Force compilation with frontend compatibility.
+    "compileTargets": {},
+  },
   "scripts": {
     "build": "novivia-builder build",
     "lint": "novivia-linter lint .",
     "open-source": "open-source",
     "pub": "novivia-builder publish",
     "release": "novivia-builder release",
-  },
-  "main": "index.js",
-  "novivia-builder": {
-    "babelPatterns": [
-
-    ],
-
-    // Force compilation with frontend compatibility.
-    "compileTargets": {},
+    "test": "novivia-tester",
   },
   "devDependencies": {
     // Novivia dependencies.
