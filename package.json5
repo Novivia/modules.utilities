@@ -27,6 +27,11 @@
     // Force compilation with frontend compatibility.
     "compileTargets": {},
   },
+  "novivia-linter": {
+    "cliConfig": {
+      "ignorePattern": "coverage",
+    },
+  },
   "scripts": {
     "build": "novivia-builder build",
     "lint": "novivia-linter lint .",

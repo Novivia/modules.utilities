@@ -6,71 +6,110 @@
 describe(
   "Environment variables",
   () => {
-    var env = process.env,
-        NODE_ENV = env.NODE_ENV;
+    const NODE_ENV = process.env.NODE_ENV;
 
-    describe("default values", function () {
-      var variables = require("../variables");
+    describe(
+      "default values",
+      () => {
+        let variables;
 
-      beforeAll(function () {
-        delete process.env.NODE_ENV;
-      });
+        beforeAll(() => {
+          delete process.env.NODE_ENV;
+          jest.resetModules();
+          variables = require("../variables");
+        });
 
-      it("should be in development", function () {
-        expect(variables).to.have.property("__DEV__")
-          .that.is.a("boolean")
-          .that.equals(true);
-        expect(variables).to.have.property("__PROD__")
-          .that.is.a("boolean")
-          .that.equals(false);
-      });
+        it(
+          "should be in development",
+          () => {
+            expect(variables.__DEV__).toBe(true);
+            expect(variables.__PROD__).toBe(false);
+            expect(variables.__STAGE__).toBe(false);
+          },
+        );
 
-      afterAll(function () {
-        process.env.NODE_ENV = NODE_ENV;
-      });
-    });
+        afterAll(() => {
+          process.env.NODE_ENV = NODE_ENV;
+        });
+      },
+    );
 
-    describe("when NODE_ENV is in development", function () {
-      var variables = require("../variables");
+    describe(
+      "when NODE_ENV is in development",
+      () => {
+        let variables;
 
-      beforeAll(function () {
-        process.env.NODE_ENV = "development";
-        variables = vars();
-      });
+        beforeAll(() => {
+          process.env.NODE_ENV = "development";
+          jest.resetModules();
+          variables = require("../variables");
+        });
 
-      it("variables should have corresponding values", function () {
-        expect(variables).to.have.property("__DEV__")
-          .that.is.a("boolean")
-          .that.equals(true);
-        expect(variables).to.have.property("__PROD__")
-          .that.is.a("boolean")
-          .that.equals(false);
-      });
+        it(
+          "variables should have corresponding values",
+          () => {
+            expect(variables.__DEV__).toBe(true);
+            expect(variables.__PROD__).toBe(false);
+            expect(variables.__STAGE__).toBe(false);
+          },
+        );
 
-      afterAll(function () {
-        process.env.NODE_ENV = NODE_ENV;
-      });
-    });
+        afterAll(() => {
+          process.env.NODE_ENV = NODE_ENV;
+        });
+      },
+    );
 
-    describe("when NODE_ENV is in production", function () {
-      var variables = require("../variables");
+    describe(
+      "when NODE_ENV is in staging",
+      () => {
+        let variables;
 
-      beforeAll(function () {
-        process.env.NODE_ENV = "production";
-      });
+        beforeAll(() => {
+          process.env.NODE_ENV = "staging";
+          jest.resetModules();
+          variables = require("../variables");
+        });
 
-      it("variables should have corresponding values", function () {
-        expect(variables).to.have.property("__DEV__")
-          .that.is.a("boolean")
-          .that.equals(false);
-        expect(variables).to.have.property("__PROD__")
-          .that.is.a("boolean")
-          .that.equals(true);
-      });
+        it(
+          "variables should have corresponding values",
+          () => {
+            expect(variables.__DEV__).toBe(false);
+            expect(variables.__PROD__).toBe(false);
+            expect(variables.__STAGE__).toBe(true);
+          },
+        );
 
-      afterAll(function () {
-        process.env.NODE_ENV = NODE_ENV;
-      });
-    });
+        afterAll(() => {
+          process.env.NODE_ENV = NODE_ENV;
+        });
+      },
+    );
+
+    describe(
+      "when NODE_ENV is in production",
+      () => {
+        let variables;
+
+        beforeAll(() => {
+          process.env.NODE_ENV = "production";
+          jest.resetModules();
+          variables = require("../variables");
+        });
+
+        it(
+          "variables should have corresponding values",
+          () => {
+            expect(variables.__DEV__).toBe(false);
+            expect(variables.__PROD__).toBe(true);
+            expect(variables.__STAGE__).toBe(false);
+          },
+        );
+
+        afterAll(() => {
+          process.env.NODE_ENV = NODE_ENV;
+        });
+      },
+    );
   },
 );
