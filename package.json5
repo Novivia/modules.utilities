@@ -41,9 +41,12 @@
     "@novivia/linter": "^1.9.0",
     "@novivia/open-sourcer": "^0.1.1",
     "@novivia/tester": "0.0.4",
+    "common-tags": "^1.4.0",
   },
   "dependencies": {
     // npm dependencies.
+    "stack-utils": "^0.4.0",
+    "stacktrace-parser": "^0.1.4",
     "verror": "^1.9.0",
   },
 }

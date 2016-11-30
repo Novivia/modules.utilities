@@ -6,13 +6,17 @@
 import {
   ApplicationError,
   CommunicationError,
+  SendingError,
 } from "../";
 import shouldInheritFromErrors from "./util/shouldInheritFromErrors";
 
 describe(
-  "CommunicationError",
+  "SendingError",
   () => shouldInheritFromErrors({
-    error: new CommunicationError(),
-    errorClasses: [ApplicationError],
+    error: new SendingError(),
+    errorClasses: [
+      ApplicationError,
+      CommunicationError,
+    ],
   }),
 );

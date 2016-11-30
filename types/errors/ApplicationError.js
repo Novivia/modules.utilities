@@ -11,12 +11,8 @@ import {WError} from "verror";
 export default class ApplicationError extends WError {
   static defaultMessage = "A problem happened with the application.";
 
+  message = (
+    this.message || Object.getPrototypeOf(this).constructor.defaultMessage
+  );
   name = Object.getPrototypeOf(this).constructor.name;
-  message = this.getMessage();
-
-  getMessage() {
-    return (
-      this.message || Object.getPrototypeOf(this).constructor.defaultMessage
-    );
-  }
 }

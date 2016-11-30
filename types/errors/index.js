@@ -6,3 +6,4 @@
 export ApplicationError from "./ApplicationError";
 
 export CommunicationError from "./CommunicationError";
+export SendingError from "./SendingError";
