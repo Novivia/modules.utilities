@@ -3,5 +3,4 @@
  * All rights reserved.
  */
 
-export * as backend from "./backend";
-export * as types from "./types";
+export * as errors from "./errors";

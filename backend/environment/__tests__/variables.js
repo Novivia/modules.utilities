@@ -3,6 +3,10 @@
  * All rights reserved.
  */
 
+import {join as joinPath} from "path";
+
+const MODULE_PATH = joinPath("..", "..", "..");
+
 describe(
   "Environment variables",
   () => {
@@ -16,7 +20,7 @@ describe(
         beforeAll(() => {
           delete process.env.NODE_ENV;
           jest.resetModules();
-          variables = require("../variables");
+          variables = require(MODULE_PATH).backend.environment.variables;
         });
 
         it(
@@ -28,9 +32,7 @@ describe(
           },
         );
 
-        afterAll(() => {
-          process.env.NODE_ENV = NODE_ENV;
-        });
+        afterAll(() => (process.env.NODE_ENV = NODE_ENV));
       },
     );
 
@@ -42,7 +44,7 @@ describe(
         beforeAll(() => {
           process.env.NODE_ENV = "development";
           jest.resetModules();
-          variables = require("../variables");
+          variables = require(MODULE_PATH).backend.environment.variables;
         });
 
         it(
@@ -54,9 +56,7 @@ describe(
           },
         );
 
-        afterAll(() => {
-          process.env.NODE_ENV = NODE_ENV;
-        });
+        afterAll(() => (process.env.NODE_ENV = NODE_ENV));
       },
     );
 
@@ -68,7 +68,7 @@ describe(
         beforeAll(() => {
           process.env.NODE_ENV = "staging";
           jest.resetModules();
-          variables = require("../variables");
+          variables = require(MODULE_PATH).backend.environment.variables;
         });
 
         it(
@@ -80,9 +80,7 @@ describe(
           },
         );
 
-        afterAll(() => {
-          process.env.NODE_ENV = NODE_ENV;
-        });
+        afterAll(() => (process.env.NODE_ENV = NODE_ENV));
       },
     );
 
@@ -94,7 +92,7 @@ describe(
         beforeAll(() => {
           process.env.NODE_ENV = "production";
           jest.resetModules();
-          variables = require("../variables");
+          variables = require(MODULE_PATH).backend.environment.variables;
         });
 
         it(
@@ -106,9 +104,7 @@ describe(
           },
         );
 
-        afterAll(() => {
-          process.env.NODE_ENV = NODE_ENV;
-        });
+        afterAll(() => (process.env.NODE_ENV = NODE_ENV));
       },
     );
   },

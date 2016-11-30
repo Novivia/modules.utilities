@@ -27,11 +27,6 @@
     // Force compilation with frontend compatibility.
     "compileTargets": {},
   },
-  "novivia-linter": {
-    "cliConfig": {
-      "ignorePattern": "coverage",
-    },
-  },
   "scripts": {
     "build": "novivia-builder build",
     "lint": "novivia-linter lint .",
@@ -43,12 +38,12 @@
   "devDependencies": {
     // Novivia dependencies.
     "@novivia/build-module": "^0.5.1",
-    "@novivia/linter": "^1.7.0",
+    "@novivia/linter": "^1.9.0",
     "@novivia/open-sourcer": "^0.1.1",
     "@novivia/tester": "0.0.4",
   },
   "dependencies": {
     // npm dependencies.
-
+    "verror": "^1.9.0",
   },
 }
