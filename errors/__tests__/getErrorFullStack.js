@@ -4,20 +4,22 @@
  */
 
 import {ApplicationError} from "../../types/errors";
-import {clean as cleanStack} from "stack-utils";
-import {getErrorFullStack} from "../";
+import {
+  cleanErrorStack,
+  getErrorFullStack,
+  parseErrorStack,
+} from "../";
 import {oneLineTrim} from "common-tags";
-import {parse as parseStack} from "stacktrace-parser";
 
 // Arbitrary length, but we don't expect smaller stacks.
 const MIN_STACK_LENGTH = 5;
 
 function verifyIfStackSeemsLegitimate(stack) {
-  const cleanedStack = cleanStack(stack);
-  const parsedStack = parseStack(stack);
+  const cleanedStack = cleanErrorStack(stack);
+  const parsedStack = parseErrorStack(stack);
 
   expect(cleanedStack).toMatch(
-    /\(errors\/__tests__\/getErrorFullStack\.js:[0-9]+:[0-9]+\)/
+    /\(errors\/__tests__\/getErrorFullStack\.js:[0-9]+:[0-9]+\)/,
   );
   expect(parsedStack.length).toBeGreaterThanOrEqual(MIN_STACK_LENGTH);
 }
@@ -37,7 +39,7 @@ describe(
         expect(fullStack).toMatch(/^TypeError: RegularTypeError/);
         verifyIfStackSeemsLegitimate(fullStack);
       },
-    )
+    );
 
     it(
       "should work when there is no cause",
@@ -51,7 +53,7 @@ describe(
 
     it(
       "should work when there is a native cause",
-      () => {
+      () => {
         const fullStack = getErrorFullStack(error2);
 
         expect(fullStack).toMatch(new RegExp(oneLineTrim`
@@ -64,7 +66,7 @@ describe(
 
     it(
       "should work when there are many causes",
-      () => {
+      () => {
         const fullStack = getErrorFullStack(
           new ApplicationError(error2, "error3"),
         );
@@ -80,7 +82,7 @@ describe(
 
     it(
       "should work when there is a non-native cause chain",
-      () => {
+      () => {
         const fullStack = getErrorFullStack(
           new ApplicationError(error1, "error4"),
         );

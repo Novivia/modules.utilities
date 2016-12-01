@@ -18,7 +18,7 @@ describe(
 
     it(
       "should work on native errors",
-      () => {
+      () => {
         expect(findErrorCauseByName(typeError, "Error")).toBeNull();
         expect(findErrorCauseByName(typeError, "TypeError")).toBe(typeError);
       },
@@ -26,7 +26,7 @@ describe(
 
     it(
       "should work when there is no cause",
-      () => {
+      () => {
         expect(findErrorCauseByName(error1, "ApplicationError"))
         .toBe(error1);
         expect(findErrorCauseByName(error1, "Error")).toBeNull();
@@ -35,7 +35,7 @@ describe(
 
     it(
       "should work when there is a native cause",
-      () => {
+      () => {
         expect(findErrorCauseByName(error2, "ApplicationError")).toBe(error2);
         expect(findErrorCauseByName(error2, "TypeError")).toBe(typeError);
         expect(findErrorCauseByName(error2, "Error")).toBeNull();
@@ -44,7 +44,7 @@ describe(
 
     it(
       "should work when there are many causes",
-      () => {
+      () => {
         const error3 = new CommunicationError(error2, "error3");
 
         expect(findErrorCauseByName(error3, "CommunicationError")).toBe(error3);

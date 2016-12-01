@@ -15,17 +15,17 @@ describe(
 
     it(
       "should work on native errors",
-      () => expect(getErrorCause(typeError)).toBeNull(),
+      () => expect(getErrorCause(typeError)).toBeNull(),
     );
 
     it(
       "should work when there is no cause",
-      () => expect(getErrorCause(error1)).toBeNull(),
+      () => expect(getErrorCause(error1)).toBeNull(),
     );
 
     it(
       "should work when there is a native cause",
-      () => {
+      () => {
         const cause = getErrorCause(error2);
 
         expect(cause).toBe(typeError);
@@ -35,7 +35,7 @@ describe(
 
     it(
       "should work when there are many causes",
-      () => {
+      () => {
         const cause = getErrorCause(new ApplicationError(error2, "error3"));
 
         expect(cause).toBe(error2);
@@ -45,7 +45,7 @@ describe(
 
     it(
       "should work when there is a non-native cause chain",
-      () => {
+      () => {
         const cause = getErrorCause(new ApplicationError(error1, "error4"));
 
         expect(cause).toBe(error1);

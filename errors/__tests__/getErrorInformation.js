@@ -9,7 +9,10 @@ import {getErrorInformation} from "../";
 describe(
   "getErrorInformation",
   () => {
-    const error2Info = {a: 123, c: 345};
+    const error2Info = {
+      a: 123,
+      c: 345,
+    };
 
     const error2 = new ApplicationError(
       {info: error2Info},
@@ -18,21 +21,27 @@ describe(
 
     it(
       "should work when no information was provided",
-      () => (
+      () => (
         expect(getErrorInformation(new ApplicationError("error1"))).toEqual({})
       ),
     );
 
     it(
       "should work with simple information",
-      () => expect(getErrorInformation(error2)).toEqual(error2Info),
+      () => expect(getErrorInformation(error2)).toEqual(error2Info),
     );
 
     it(
       "should work with inherited information",
-      () => {
-        const error3Info = {b: 123, c: 678};
-        const combinedInfo = {...error2Info, ...error3Info};
+      () => {
+        const error3Info = {
+          b: 123,
+          c: 678,
+        };
+        const combinedInfo = {
+          ...error2Info,
+          ...error3Info,
+        };
 
         const error3 = new ApplicationError(
           {

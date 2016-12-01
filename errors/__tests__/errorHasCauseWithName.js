@@ -15,7 +15,7 @@ describe(
 
     it(
       "should work on native errors",
-      () => {
+      () => {
         expect(errorHasCauseWithName(typeError, "Error")).toBe(false);
         expect(errorHasCauseWithName(typeError, "TypeError")).toBe(true);
       },
@@ -23,7 +23,7 @@ describe(
 
     it(
       "should work when there is no cause",
-      () => {
+      () => {
         expect(errorHasCauseWithName(error1, "ApplicationError")).toBe(true);
         expect(errorHasCauseWithName(error1, "Error")).toBe(false);
       },
@@ -31,7 +31,7 @@ describe(
 
     it(
       "should work when there is a native cause",
-      () => {
+      () => {
         expect(errorHasCauseWithName(error2, "ApplicationError")).toBe(true);
         expect(errorHasCauseWithName(error2, "TypeError")).toBe(true);
         expect(errorHasCauseWithName(error2, "Error")).toBe(false);
@@ -40,7 +40,7 @@ describe(
 
     it(
       "should work when there are many causes",
-      () => {
+      () => {
         const error3 = new ApplicationError(error2, "error3");
 
         expect(errorHasCauseWithName(error3, "ApplicationError")).toBe(true);
