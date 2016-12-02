@@ -4,3 +4,4 @@
  */
 
 export * as errors from "./errors";
+export Enum from "./Enum";
