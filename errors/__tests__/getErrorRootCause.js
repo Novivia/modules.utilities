@@ -3,10 +3,7 @@
  * All rights reserved.
  */
 
-import {
-  ApplicationError,
-  CommunicationError,
-} from "../../types/errors";
+import {ApplicationError} from "../../types/errors";
 import {getErrorRootCause} from "../";
 
 describe(

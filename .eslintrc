@@ -176,8 +176,7 @@
       "prefer": {
         "returns": "return"
       },
-      "requireReturn": false,
-      "requireReturnType": false
+      "requireReturn": false
     }],
     "valid-typeof": ["error", {
       "requireStringLiterals": true

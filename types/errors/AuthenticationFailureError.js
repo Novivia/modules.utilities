@@ -4,7 +4,6 @@
  */
 
 import PermissionError from "./PermissionError";
-import {oneLine} from "common-tags";
 
 /**
  * Represents an authentication failure error.
