@@ -41,6 +41,10 @@
     "release": "novivia-builder release",
     "test": "novivia-tester",
   },
+  "peerDependencies": {
+    "react": "^15.4.0",
+    "react-addons-create-fragment": "^15.4.0",
+  },
   "devDependencies": {
     // Novivia dependencies.
     "@novivia/build-module": "^0.5.1",
@@ -52,12 +56,12 @@
   },
   "dependencies": {
     // npm dependencies.
+    "base-x": "^1.1.0",
+    "lodash": "^4.17.2",
     "stack-utils": "^0.4.0",
     "stacktrace-parser": "^0.1.4",
-    "verror": "^1.9.0",
-    "base-x": "^1.1.0",
     "uuid": "^3.0.1",
-    "lodash": "^4.17.2",
     "uuid-validate": "0.0.2",
+    "verror": "^1.9.0",
   },
 }
