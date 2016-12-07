@@ -5,3 +5,4 @@
 
 export * as uuid from "./uuid";
 export stringToReact from "./stringToReact";
+export url from "./url";
