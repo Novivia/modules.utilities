@@ -4,6 +4,8 @@
  * All rights reserved.
  */
 
+/* eslint-disable filenames/match-exported */
+
 import {
   v1 as generateUUIDV1,
   v4 as generateUUIDV4,
@@ -60,7 +62,7 @@ function decodeUUID(
   {
     base,
     encoding = "hex",
-  }: UUIDTranscodeOptions = {},
+  }: UUIDTranscodeOptions,
 ): string {
   const output = Buffer.from(
     base.decode(trimStart(input, "0")),
@@ -68,6 +70,7 @@ function decodeUUID(
 
   // Re-add the dashes so the result looks like an UUID.
   return (
+    // eslint-disable-next-line no-magic-numbers
     [8, 13, 18, 23]
     .reduce(
       (finalValue, value) => {
@@ -88,7 +91,7 @@ function encodeUUID(
     base,
     encoding = "hex",
     length = defaultLength,
-  }: UUIDTranscodeOptions = {},
+  }: UUIDTranscodeOptions,
 ): string {
   let output = input;
 
@@ -117,7 +120,7 @@ function ensureLength(input: string, maximumLength?: number): string {
 
 function makeTranscodeFunction(transcodeFunction: () => string): () => string {
   return function transcode(
-    input: string,
+    input: Buffer | string,
     {
       base,
       basePreset = defaultPreset,
@@ -146,7 +149,7 @@ export function getBase(basePreset: number): Base {
     );
   }
 
-  const base = basePresets[basePreset];
+  const base = basePresets[baseMapping];
 
   if (!base) {
     return (basePresets[baseMapping] = getBaseX(baseMapping));

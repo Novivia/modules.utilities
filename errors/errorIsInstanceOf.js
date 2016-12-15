@@ -8,6 +8,9 @@ import {__DEV__} from "../backend/environment/variables";
 /**
  * Compares two error instances and tries to determine if they're the same or
  * part of the same inheritance tree.
+ *
+ * @returns Whether the error is in the same inheritance tree as the
+ *          constructor.
  */
 export default function errorIsInstanceOf(
   // An Error (or descendant) instance.

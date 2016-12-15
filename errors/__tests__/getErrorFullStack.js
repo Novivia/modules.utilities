@@ -9,10 +9,23 @@ import {
   getErrorFullStack,
   parseErrorStack,
 } from "../";
+import {major as getMajorVersion} from "semver";
 import {oneLineTrim} from "common-tags";
 
 // Arbitrary length, but we don't expect smaller stacks.
 const MIN_STACK_LENGTH = 5;
+
+// Error stacks don't play well with Babel on Node 7 and above.
+// See https://github.com/babel/babel/issues/4923
+function getStackErrorCheck(errorType, errorMessage) {
+  const error = (getMajorVersion(process.version) > 6) ? "WError" : errorType;
+
+  return `${error}: ${errorMessage}`;
+}
+
+function getStackRegExCheck(...args) {
+  return new RegExp(`^${getStackErrorCheck(...args)}`);
+}
 
 function verifyIfStackSeemsLegitimate(stack) {
   const cleanedStack = cleanErrorStack(stack);
@@ -46,7 +59,9 @@ describe(
       () => {
         const fullStack = getErrorFullStack(error1);
 
-        expect(fullStack).toMatch(/^ApplicationError: error1/);
+        expect(fullStack).toMatch(
+          getStackRegExCheck("ApplicationError", "error1"),
+        );
         verifyIfStackSeemsLegitimate(fullStack);
       },
     );
@@ -57,7 +72,7 @@ describe(
         const fullStack = getErrorFullStack(error2);
 
         expect(fullStack).toMatch(new RegExp(oneLineTrim`
-          ^ApplicationError: error2[^]*?
+          ^${getStackErrorCheck("ApplicationError", "error2")}[^]*?
           caused by: TypeError: RegularTypeError
         `));
         verifyIfStackSeemsLegitimate(fullStack);
@@ -72,8 +87,8 @@ describe(
         );
 
         expect(fullStack).toMatch(new RegExp(oneLineTrim`
-          ^ApplicationError: error3[^]*?
-          caused by: ApplicationError: error2[^]*?
+          ^${getStackErrorCheck("ApplicationError", "error3")}[^]*?
+          caused by: ${getStackErrorCheck("ApplicationError", "error2")}[^]*?
           caused by: TypeError: RegularTypeError
         `));
         verifyIfStackSeemsLegitimate(fullStack);
@@ -88,8 +103,8 @@ describe(
         );
 
         expect(fullStack).toMatch(new RegExp(oneLineTrim`
-          ^ApplicationError: error4[^]*?
-          caused by: ApplicationError: error1
+          ^${getStackErrorCheck("ApplicationError", "error4")}[^]*?
+          caused by: ${getStackErrorCheck("ApplicationError", "error1")}
         `));
         verifyIfStackSeemsLegitimate(fullStack);
       },

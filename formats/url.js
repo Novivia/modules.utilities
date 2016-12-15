@@ -3,7 +3,8 @@
  * All rights reserved.
  */
 
-import isPlainObject from "lodash/isPlainObject";
+/* eslint-disable filenames/match-exported */
+
 import {join as joinPath} from "path";
 import {parse as parseUrl} from "path-to-regexp";
 
@@ -28,14 +29,10 @@ export default function formatUrl(
         );
       }
 
-      if (isPlainObject(token)) {
-        return joinPath(
-          fullUrl,
-          params[token.name] || `:${token.name}`,
-        );
-      }
-
-      return fullUrl;
+      return joinPath(
+        fullUrl,
+        params[token.name] || `:${token.name}`,
+      );
     },
     (url.charAt(0) === "/") ? "/" : "",
   );

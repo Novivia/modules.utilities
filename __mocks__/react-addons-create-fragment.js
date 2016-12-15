@@ -3,6 +3,7 @@
  * All rights reserved.
  */
 
+/* eslint-disable filenames/match-exported, filenames/match-regex */
 export default function createFragment({
   after = "",
   before = "",

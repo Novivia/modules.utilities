@@ -62,6 +62,14 @@ describe(
           "generation",
           () => {
             describe(
+              "default",
+              () => it(
+                "should be a valid UUID",
+                () => expect(validate(generate())).toBe(true),
+              ),
+            );
+
+            describe(
               "v1",
               () => {
                 const seed = {
@@ -132,6 +140,18 @@ describe(
                 );
               },
             );
+
+            describe(
+              "force encode",
+              () => {
+                it(
+                  "should generate and encode",
+                  () => expect(
+                    validate(decode(generate({forceEncode: true}))),
+                  ).toBe(true),
+                );
+              },
+            );
           },
         );
 
@@ -192,6 +212,13 @@ describe(
               () => expect(
                 encode(myUuid, {encoding: "ascii"}),
               ).toBe("dBFz7vQYNBNSiCk34Mq6KMtDSv3cEJQP7PKf5s5UO7s"),
+            );
+
+            it(
+              "should encode a UUID that is a buffer",
+              () => expect(
+                encode(Buffer.from(myUuid.replace(/-/g, ""), "hex")),
+              ).toBe("4JNFLLQ9GMPJQcATeuBRWn"),
             );
           },
         );
@@ -308,6 +335,19 @@ describe(
             );
 
             it(
+              "should auto-validate UUIDs correctly",
+              () => {
+                expect(validate(myV1Uuid, {version: false})).toBe(true);
+                expect(validate(myV4Uuid, {version: false})).toBe(true);
+                expect(validate("garbage", {version: false})).toBe(false);
+                expect(validate(
+                  "garbages-garb-1ges-garb-agesgarb",
+                  {version: false},
+                )).toBe(false);
+              },
+            );
+
+            it(
               "should not validate an invalid UUID version",
               () => {
                 expect(validate(myV1Uuid, {version: 9})).toBe(false);
@@ -375,6 +415,14 @@ describe(
         describe(
           "generation",
           () => {
+            describe(
+              "default",
+              () => it(
+                "should be a valid UUID",
+                () => expect(validate(new UUID().toString())).toBe(true),
+              ),
+            );
+
             describe(
               "v1",
               () => {

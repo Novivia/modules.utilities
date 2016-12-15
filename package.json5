@@ -27,11 +27,6 @@
     // Force compilation with frontend compatibility.
     "compileTargets": {},
   },
-  // FIXME: Re-enable coverage with the next release of Jest. (Currently
-  // at 17.0.3)
-  "novivia-tester": {
-    "noCoverage": true,
-  },
   "scripts": {
     "build": "novivia-builder build",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
@@ -48,25 +43,26 @@
   "devDependencies": {
     // Novivia dependencies.
     "@novivia/build-module": "^0.5.1",
-    "@novivia/linter": "^1.9.0",
+    "@novivia/linter": "^1.10.1",
     "@novivia/open-sourcer": "^0.1.1",
-    "@novivia/tester": "^0.1.0",
+    "@novivia/tester": "^1.0.0",
 
     // npm dependencies.
-    "flow-bin": "^0.36.0",
+    "flow-bin": "^0.37.0",
+    "semver": "^5.3.0",
   },
   "dependencies": {
     // npm dependencies.
     "base-x": "^1.1.0",
     "common-tags": "^1.4.0",
+    "html-entities": "^1.2.0",
     "lodash": "^4.17.2",
+    "path-to-regexp": "^1.7.0",
+    "sanitize-html": "^1.13.0",
     "stack-utils": "^0.4.0",
     "stacktrace-parser": "^0.1.4",
     "uuid": "^3.0.1",
     "uuid-validate": "0.0.2",
     "verror": "^1.9.0",
-    "path-to-regexp": "^1.7.0",
-    "html-entities": "^1.2.0",
-    "sanitize-html": "^1.13.0",
   },
 }
