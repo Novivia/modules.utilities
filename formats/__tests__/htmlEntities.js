@@ -46,9 +46,11 @@ describe(
             () => expect(decode({
               a: "&quot;&amp;456&copy;",
               b: "&lt;&gt;&reg;",
+              c: null,
             })).toEqual({
               a: "\"&456©",
               b: "<>®",
+              c: null,
             }),
           ),
         );
