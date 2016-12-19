@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-export * as decodeEntities from "./decodeEntities";
+export * as htmlEntities from "./htmlEntities";
 export url from "./url";
 export * as uuid from "./uuid";
 export stringToReact from "./stringToReact";
