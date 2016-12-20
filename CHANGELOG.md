@@ -1,5 +1,11 @@
 # Versions
 
+## v0.1.1 - (20/12/2016)
+
+* Fixed `formats.htmlEntities` utilities not handling `null` properties.
+* Now exposing `errors` and `formats` utilities properly from the root export.
+
+
 ## v0.1.0 - (19/12/2016)
 
 * Renamed `formats.decodeEntities` utility to `formats.htmlEntities`. Added the
