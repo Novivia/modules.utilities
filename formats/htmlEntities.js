@@ -30,6 +30,10 @@ function walk(input, {deep}, functor) {
   }
 
   if (typeof input === "object") {
+    if (input === null) {
+      return input;
+    }
+
     return Object.keys(input).reduce(
       (entries, entry) => {
         entries[entry] = mapper(input[entry], {deep}, functor);
