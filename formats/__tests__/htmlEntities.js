@@ -41,18 +41,24 @@ describe(
 
         describe(
           "on a simple object with entities",
-          () => it(
-            "should return the decoded object",
-            () => expect(decode({
-              a: "&quot;&amp;456&copy;",
-              b: "&lt;&gt;&reg;",
-              c: null,
-            })).toEqual({
-              a: "\"&456©",
-              b: "<>®",
-              c: null,
-            }),
-          ),
+          () => {
+            const myDate = new Date();
+
+            it(
+              "should return the decoded object",
+              () => expect(decode({
+                a: "&quot;&amp;456&copy;",
+                b: "&lt;&gt;&reg;",
+                c: null,
+                d: myDate,
+              })).toEqual({
+                a: "\"&456©",
+                b: "<>®",
+                c: null,
+                d: myDate,
+              }),
+            );
+          },
         );
 
         describe(
@@ -212,16 +218,24 @@ describe(
 
         describe(
           "on a simple object with entities",
-          () => it(
-            "should return the decoded object",
-            () => expect(encode({
-              a: "\"&456©",
-              b: "<>®",
-            })).toEqual({
-              a: "&quot;&amp;456&copy;",
-              b: "&lt;&gt;&circledR;",
-            }),
-          ),
+          () => {
+            const myDate = new Date();
+
+            it(
+              "should return the decoded object",
+              () => expect(encode({
+                a: "\"&456©",
+                b: "<>®",
+                c: null,
+                d: myDate,
+              })).toEqual({
+                a: "&quot;&amp;456&copy;",
+                b: "&lt;&gt;&circledR;",
+                c: null,
+                d: myDate,
+              }),
+            );
+          },
         );
 
         describe(
