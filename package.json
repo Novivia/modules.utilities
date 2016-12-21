@@ -4,55 +4,44 @@
   "version": "0.1.2",
   "engines": {
     "node": ">=4",
-    "npm": ">=3",
+    "npm": ">=3"
   },
   "license": "SEE LICENSE IN LICENSE.md",
-  "publishConfig": {
-    "registry": "https://npm.novivia.com",
-  },
   "description": "Novivia general utilities.",
   "authors": [
-    "Mathieu M-Gosselin <mathieumg@novivia.com>",
+    "Mathieu M-Gosselin <mathieumg@novivia.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git.novivia.com/nov/modules.utilities"
+    "url": "git@github.com:Novivia/modules.utilities.git"
   },
   "main": "index.js",
   "novivia-builder": {
     "babelPatterns": [
-      "**/*.js",
+      "**/*.js"
     ],
-
-    // Force compilation with frontend compatibility.
-    "compileTargets": {},
+    "compileTargets": {}
   },
   "scripts": {
     "build": "novivia-builder build",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "lint": "novivia-linter lint .",
-    "open-source": "open-source",
     "pub": "novivia-builder publish",
     "release": "novivia-builder release",
-    "test": "novivia-tester",
+    "test": "novivia-tester"
   },
   "peerDependencies": {
     "react": "^15.4.0",
-    "react-addons-create-fragment": "^15.4.0",
+    "react-addons-create-fragment": "^15.4.0"
   },
   "devDependencies": {
-    // Novivia dependencies.
     "@novivia/build-module": "^0.5.2",
     "@novivia/linter": "^1.10.1",
-    "@novivia/open-sourcer": "^0.1.2",
     "@novivia/tester": "^1.0.0",
-
-    // npm dependencies.
     "flow-bin": "^0.37.0",
-    "semver": "^5.3.0",
+    "semver": "^5.3.0"
   },
   "dependencies": {
-    // npm dependencies.
     "base-x": "^1.1.0",
     "common-tags": "^1.4.0",
     "html-entities": "^1.2.0",
@@ -63,6 +52,6 @@
     "stacktrace-parser": "^0.1.4",
     "uuid": "^3.0.1",
     "uuid-validate": "0.0.2",
-    "verror": "^1.9.0",
-  },
+    "verror": "^1.9.0"
+  }
 }
