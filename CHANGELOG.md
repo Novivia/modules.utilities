@@ -1,5 +1,11 @@
 # Versions
 
+## v0.1.2 - (21/12/2016)
+
+* Fixed `formats.htmlEntities` utilities not handling object instance
+  properties correctly.
+
+
 ## v0.1.1 - (20/12/2016)
 
 * Fixed `formats.htmlEntities` utilities not handling `null` properties.

@@ -4,6 +4,7 @@
  */
 
 import {AllHtmlEntities} from "html-entities";
+import isPlainObject from "lodash/isPlainObject";
 
 /*
  * All HTML entitites decoding.
@@ -29,7 +30,7 @@ function walk(input, {deep}, functor) {
     return input.map(entry => mapper(entry, {deep}, functor));
   }
 
-  if (typeof input === "object") {
+  if (isPlainObject(input)) {
     if (input === null) {
       return input;
     }
