@@ -1,7 +1,7 @@
 {
   "name": "@novivia/utilities",
   "role": "utilities",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "engines": {
     "node": ">=4",
     "npm": ">=3"

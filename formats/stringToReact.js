@@ -50,9 +50,20 @@ export default function stringToReact(
       // An empty group returns an empty string, optimize by not fragmenting
       // empty strings.
       return createFragment({
-        after: after ? match(after) : undefined,
         before: before ? before : undefined,
         inside: tokenMap[matchedToken](match(part)),
+
+        // Order is important here. See
+        // https://facebook.github.io/react/docs/create-fragment.html
+        //
+        // "and the order of the object's keys is used to determine the order of
+        // the rendered children […] Note also that we're relying on the
+        // JavaScript engine preserving object enumeration order here, which is
+        // not guaranteed by the spec but is implemented by all major browsers
+        // and VMs for objects with non-numeric keys."
+        //
+        // eslint-disable-next-line sort-keys
+        after: after ? match(after) : undefined,
       });
     }
 
