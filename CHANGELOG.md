@@ -1,6 +1,6 @@
 # Versions
 
-## v0.1.3 - (30/12/2016)
+## v0.1.3 - (03/01/2017)
 
 * Addressed an issue where the `formats.stringToReact` utility would not order
   the formatted nodes in the right order.
