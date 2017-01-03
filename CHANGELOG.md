@@ -1,5 +1,11 @@
 # Versions
 
+## v0.1.3 - (03/01/2017)
+
+* Addressed an issue where the `formats.stringToReact` utility would not order
+  the formatted nodes in the right order.
+
+
 ## v0.1.2 - (21/12/2016)
 
 * Fixed `formats.htmlEntities` utilities not handling object instance
