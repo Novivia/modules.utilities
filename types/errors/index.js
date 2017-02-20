@@ -16,6 +16,7 @@ export ResourceNotFoundError from "./ResourceNotFoundError";
 export PermissionError from "./PermissionError";
 export AccessDeniedError from "./AccessDeniedError";
 export AuthenticationFailureError from "./AuthenticationFailureError";
+export OperationNotPermittedError from "./OperationNotPermittedError";
 export ReadOnlyError from "./ReadOnlyError";
 export UsageLimitError from "./UsageLimitError";
 

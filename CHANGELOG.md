@@ -1,5 +1,11 @@
 # Versions
 
+## v0.1.4 - ()
+
+* Added the `OperationNotPermittedError` error type. It is considered to be a
+  `PermissionError`.
+
+
 ## v0.1.3 - (03/01/2017)
 
 * Addressed an issue where the `formats.stringToReact` utility would not order
