@@ -27,8 +27,7 @@ describe(
     it(
       "should work when there is no cause",
       () => {
-        expect(findErrorCauseByName(error1, "ApplicationError"))
-        .toBe(error1);
+        expect(findErrorCauseByName(error1, "ApplicationError")).toBe(error1);
         expect(findErrorCauseByName(error1, "Error")).toBeNull();
       },
     );

@@ -3,9 +3,16 @@
  * All rights reserved.
  */
 
-// Peer dependency. Stubbed out for tests.
-// eslint-disable-next-line import/no-unresolved
-import createFragment from "react-addons-create-fragment";
+let createFragment;
+
+try {
+  // Peer dependency. Stubbed out for tests.
+  // eslint-disable-next-line import/no-unresolved
+  createFragment = require("react-addons-create-fragment");
+} catch (e) {
+  // We'll load the `react-addons-create-fragment` dependency only if this file
+  // is required and it exists.
+}
 
 type ObjectMap<X> = {[key: string]: X};
 

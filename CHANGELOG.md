@@ -1,9 +1,19 @@
 # Versions
 
-## v0.1.4 - ()
+## v0.2.0 - (01/05/2017)
 
 * Added the `OperationNotPermittedError` error type. It is considered to be a
   `PermissionError`.
+* The `formats.stringToReact` utility will no longer cause a crash upon loading
+  if the peer dependency `react-addons-create-fragment` is not available. This
+  should allow to load the root of this module everywhere, even when
+  `react`/`react-addons-create-fragment` are not available.
+* Now requires Node v4.5+ to work.
+
+* Updated dependencies:
+    * `base-x` to v3.
+    * `flow-bin` to v0.45.
+    * `stack-utils` to v1.
 
 
 ## v0.1.3 - (03/01/2017)
