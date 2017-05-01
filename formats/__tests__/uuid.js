@@ -46,13 +46,15 @@ describe(
 
                 expect(base.decode).toBeDefined();
                 expect(base.encode).toBeDefined();
-                expect(base.decode(base.encode(sample))).toEqual(sample);
+                expect(
+                  base.decode(base.encode(sample)),
+                ).toEqual(Buffer.from(sample));
 
                 // Bases are cached when they're first acquired, this ensures
                 // getting the same one twice and thrice doesn't break anything.
                 expect(
                   getBase(2).decode(getBase(2).encode(sample)),
-                ).toEqual(sample);
+                ).toEqual(Buffer.from(sample));
               },
             );
           },
